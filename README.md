@@ -1,6 +1,6 @@
 # Projekt-Plastic
 
-1.4.1	Beschreibung
+Beschreibung:
 In der App soll es möglich sein seine verwendeten Plastik Produkte auszuwählen. 
 Dabei werden in der App verschiedene Buttons angezeigt, die die am häufigsten 
 verwendeten Plastikprodukte auflisten. Nach Drücken eines Knopfes wird abgespeichert, 
@@ -13,14 +13,14 @@ anzeigen will. Außerdem sollen Tipps zur Vermeidung von den am häufigsten verw
 
 
 
-Soll Kriterien
+Soll Kriterien:
 -In der App sollen die am häufigsten verwendeten Plastik Produkte aufgelistet sein
 -Es soll abgespeichert werden welche Produkte man im laufe des Tages verwendet
 -Es soll eine statistische Auswertung des gesamten Plastikverbrauchs dargestellt werden
 -Es sollen Tipps zur Verminderung des Verbrauchs gegeben werden
 
 
-Kann Kriterien
+Kann Kriterien:
 -Man soll sich aussuchen können ob die Produkte, die man verbraucht oder die die man sich spart gespeichert werden.
 -Push Mitteilungen über positive oder negative Entwicklungen im Verbrauch
 -Benutzer soll selbst die Möglichkeit haben Produkte hinzuzufügen und weg zu löschen
