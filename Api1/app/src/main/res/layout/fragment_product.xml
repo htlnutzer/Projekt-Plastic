@@ -28,40 +28,46 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/imageButton5"
+                android:id="@+id/btn1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/tupperware" />
 
             <ImageButton
-                android:id="@+id/imageButton4"
+                android:id="@+id/btn2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/plastikflascheklein" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/btn3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/plasticwrap" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/btn4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/plasticbag" />
 
             <ImageButton
-                android:id="@+id/imageButton30"
+                android:id="@+id/btn5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/coplasticcoffeecup" />
 
             <ImageButton
-                android:id="@+id/imageButton28"
+                android:id="@+id/btn6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/chippacket" />
+
+            <TextView
+                android:id="@+id/txt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
         </LinearLayout>
     </ScrollView>
 
