@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,15 +21,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private ImageButton btn4;
     private ImageButton btn5;
     private ImageButton btn6;
-    private TextView textView;
-
-    private int flaschenProTag;
-
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String TEXT = "text";
-    public static final String BTN1 = "btn1";
-
-    private String text;
+    Database db;
 
 
     @Override
@@ -39,82 +33,66 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
 
+        db = new Database(this);
 
 
-        btn1 = (ImageButton) findViewById(R.id.btn1);
-        btn2 = (ImageButton) findViewById(R.id.btn2);
-        btn3 = (ImageButton) findViewById(R.id.btn3);
-        btn4 = (ImageButton) findViewById(R.id.btn4);
-        btn5 = (ImageButton) findViewById(R.id.btn5);
-        btn6 = (ImageButton) findViewById(R.id.btn6);
-        textView = (TextView) findViewById(R.id.txt1);
 
+    /**   btn2 = (ImageButton) findViewById(R.id.btn2);
 
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                flaschenProTag = flaschenProTag+15;
-                textView.setText(flaschenProTag);
-            }
-        });
+     btn2.setOnClickListener(new View.OnClickListener() {
+    @Override public void onClick(View v) {
+    openDifBottles();
+    }
+    });
+     btn1 = (ImageButton) findViewById(R.id.btn1);
+     btn3 = (ImageButton) findViewById(R.id.btn3);
+     btn4 = (ImageButton) findViewById(R.id.btn4);
+     btn5 = (ImageButton) findViewById(R.id.btn5);
+     btn6 = (ImageButton) findViewById(R.id.btn6);
 
-       btn2.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-
-           }
-       });
-
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        btn6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
+     btn1.setOnClickListener(new View.OnClickListener() {
+    @Override public void onClick(View v) {
 
     }
-        public void saveData(){
-            SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
+    });
 
-            editor.putString(TEXT, textView.getText().toString());
+     btn2.setOnClickListener(new View.OnClickListener() {
+    @Override public void onClick(View v) {
 
-            editor.apply();
+    }
+    });
 
-            Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
-        }
+     btn3.setOnClickListener(new View.OnClickListener() {
+    @Override public void onClick(View v) {
 
-        public void loadData(){
-            SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-            text = sharedPreferences.getString(TEXT, "");
-        }
+    }
+    });
 
-        public void updateViews(){
-            textView.setText(text);
-        }
+     btn4.setOnClickListener(new View.OnClickListener() {
+    @Override public void onClick(View v) {
 
+    }
+    });
+
+     btn5.setOnClickListener(new View.OnClickListener() {
+    @Override public void onClick(View v) {
+
+    }
+    });
+
+     btn6.setOnClickListener(new View.OnClickListener() {
+    @Override public void onClick(View v) {
+
+    }
+    });
+     **/
+}
+
+
+  //  public void openDifBottles(){
+  //      Intent intent = new Intent(this, welche_flasche);
+  //      startActivity(intent);
+  //  }
 
 
     private boolean loadFragment(Fragment fragment){

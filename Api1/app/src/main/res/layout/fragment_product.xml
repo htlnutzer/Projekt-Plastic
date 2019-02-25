@@ -63,11 +63,6 @@
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/chippacket" />
 
-            <TextView
-                android:id="@+id/txt1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
         </LinearLayout>
     </ScrollView>
 
