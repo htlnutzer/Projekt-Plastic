@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,9 +14,19 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class ProductFragment extends Fragment {
+    private ImageButton btn1;
+    private ImageButton btn2;
+    private ImageButton btn3;
+    private ImageButton btn4;
+    private ImageButton btn5;
+    private ImageButton btn6;
+    private Button displayBtn;
+    Database db;
 
 
 
@@ -23,9 +35,128 @@ public class ProductFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_product, null);
+        db = new Database(getActivity());
+        View v = inflater.inflate(R.layout.fragment_product, null);
+
+        btn1 = (ImageButton) v.findViewById(R.id.btn1);
+        btn2 = (ImageButton) v.findViewById(R.id.btn2);
+        btn3 = (ImageButton) v.findViewById(R.id.btn3);
+        btn4 = (ImageButton) v.findViewById(R.id.btn4);
+        btn5 = (ImageButton) v.findViewById(R.id.btn5);
+        btn6 = (ImageButton) v.findViewById(R.id.btn6);
+        displayBtn = (Button) v.findViewById(R.id.DisplayBtn);
+        AddData();
+        viewALL();
+        return v;
+
+    }
+
+    public void AddData(){
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               boolean isInserted = db.insertData("Tupperware", "100");
+
+               if(isInserted == true) {
+                   Toast.makeText(getContext(), " Tupperware wurde hinzugefügt", Toast.LENGTH_SHORT).show();
+               }else{
+                   Toast.makeText(getContext(), " Tupperware konnte nicht hinzugefügt werden", Toast.LENGTH_SHORT).show();
+               }
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isInserted = db.insertData("Flasche", "10");
+
+                if(isInserted == true) {
+                    Toast.makeText(getContext(), "Wurde hinzugefügt", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "Konnte nicht hinzugefügt werden", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isInserted = db.insertData("Folie", "30");
+
+                if(isInserted == true) {
+                    Toast.makeText(getContext(), "Folie wurde hinzugefügt", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "Folie konnte nicht hinzugefügt werden", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isInserted = db.insertData("Einkaufsack", "10");
+
+                if(isInserted == true) {
+                    Toast.makeText(getContext(), "Einkaufsack wurde hinzugefügt", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "Einkaufsack konnte nicht hinzugefügt werden", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isInserted = db.insertData("Kaffee", "10");
+
+                if(isInserted == true) {
+                    Toast.makeText(getContext(), "Kaffee wurde hinzugefügt", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "Kaffee konnte nicht hinzugefügt werden", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isInserted = db.insertData("Chips", "10");
+
+                if(isInserted == true) {
+                    Toast.makeText(getContext(), "Chips Packung wurde hinzugefügt", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "Chips Packung konnte nicht hinzugefügt werden", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
+    }
 
+    public void viewALL(){
+        displayBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Cursor res = db.getAllData();
+                if(res.getCount() == 0){
+                    showMessage("Error", "nothing found");
+                    return;
+                }
+                StringBuffer buffer = new StringBuffer();
+                while(res.moveToNext()){
+                    buffer.append("Product: "+ res.getString(0) + "\n");
+                    buffer.append("Product Weight: "+ res.getString(1) + "\n\n");
+                }
+                showMessage("Data",buffer.toString());
+            }
+        });
+    }
+
+    public void showMessage(String title, String Message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(Message);
+        builder.show();
     }
 }
