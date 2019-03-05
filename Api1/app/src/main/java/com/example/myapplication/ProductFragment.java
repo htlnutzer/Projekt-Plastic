@@ -145,7 +145,7 @@ public class ProductFragment extends Fragment {
                 StringBuffer buffer = new StringBuffer();
                 while(res.moveToNext()){
                     buffer.append("Product: "+ res.getString(0) + "\n");
-                    buffer.append("Product Weight: "+ res.getString(1) + "\n\n");
+                    buffer.append("Product Weight: "+ res.getInt(1) + "\n\n");
                 }
                 showMessage("Data",buffer.toString());
             }
