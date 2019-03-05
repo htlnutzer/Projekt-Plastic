@@ -19,6 +19,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class ProductFragment extends Fragment {
     private ImageButton btn1;
     private ImageButton btn2;
@@ -146,8 +149,16 @@ public class ProductFragment extends Fragment {
                 }
                 StringBuffer buffer = new StringBuffer();
                 while(res.moveToNext()){
+                    SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy"); // New Pattern
+                    java.util.Date date;
+                    try {
+                        date = sdf1.parse(res.getString(3)); // Returns a Date format object with the pattern
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                     buffer.append("Product: "+ res.getString(1) + "\n");
-                    buffer.append("Product Weight: "+ res.getString(2) + "\n\n");
+                    buffer.append("Product Weight: "+ res.getString(2) + "\n");
+                    buffer.append("Datum "+ res.getString(3) + "\n\n");
                 }
                 showMessage("Data",buffer.toString());
             }

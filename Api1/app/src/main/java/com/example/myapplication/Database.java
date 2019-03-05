@@ -17,7 +17,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "plastic_usage";
     public static final String Product = "PRODUCT";
     public static final String ProductWeight = "WEIGHT";
-    public static final String Date = "day";
+    public static final String Date = "DAY";
     //public static final Timestamp Date = Timestamp.valueOf();
 
 
@@ -28,13 +28,13 @@ public class Database extends SQLiteOpenHelper {
     public void resetDatabase(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("Drop table " + TABLE_NAME);
-        db.execSQL("create table " + TABLE_NAME + " (ID integer primary key autoincrement, PRODUCT TEXT, WEIGHT Text)");
+        db.execSQL("create table " + TABLE_NAME + " (ID integer primary key autoincrement, PRODUCT TEXT, WEIGHT Text, DAY text)");
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("Drop table " + TABLE_NAME);
-        db.execSQL("create table " + TABLE_NAME + " (ID integer primary key autoincrement, PRODUCT TEXT, WEIGHT Text)");
+        db.execSQL("create table " + TABLE_NAME + " (ID integer primary key autoincrement, PRODUCT TEXT, WEIGHT Text, DAY text)");
     }
 
     @Override
@@ -45,8 +45,16 @@ public class Database extends SQLiteOpenHelper {
     public boolean insertData(String product, String productWeight){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+
+
+        java.util.Date today = new Date(System.currentTimeMillis());
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy"); // New Pattern
+        String heute = sdf1.format(today);
+
+
         contentValues.put(Product, product);
         contentValues.put(ProductWeight, productWeight);
+        contentValues.put(Date, heute);
         long result = db.insert(TABLE_NAME, null, contentValues);
         if(result == -1){
             return false;
