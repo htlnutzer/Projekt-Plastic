@@ -27,14 +27,12 @@ public class Database extends SQLiteOpenHelper {
 
     public void resetDatabase(){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("Drop table " + TABLE_NAME);
-        db.execSQL("create table " + TABLE_NAME + " (ID integer primary key autoincrement, PRODUCT TEXT, WEIGHT Text, DAY text)");
+        db.execSQL("create table if not exists " + TABLE_NAME + " (ID integer primary key autoincrement, PRODUCT TEXT, WEIGHT Text, DAY text)");
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Drop table " + TABLE_NAME);
-        db.execSQL("create table " + TABLE_NAME + " (ID integer primary key autoincrement, PRODUCT TEXT, WEIGHT Text, DAY text)");
+        db.execSQL("create table if not exists " + TABLE_NAME + " (ID integer primary key autoincrement, PRODUCT TEXT, WEIGHT Text, DAY text)");
     }
 
     @Override
