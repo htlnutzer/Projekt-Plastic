@@ -11,6 +11,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class ProductFragment extends Fragment {
         btn5 = (ImageButton) v.findViewById(R.id.btn5);
         btn6 = (ImageButton) v.findViewById(R.id.btn6);
         displayBtn = (Button) v.findViewById(R.id.DisplayBtn);
+        db.resetDatabase();
         AddData();
         viewALL();
         return v;
@@ -144,8 +146,8 @@ public class ProductFragment extends Fragment {
                 }
                 StringBuffer buffer = new StringBuffer();
                 while(res.moveToNext()){
-                    buffer.append("Product: "+ res.getString(0) + "\n");
-                    buffer.append("Product Weight: "+ res.getInt(1) + "\n\n");
+                    buffer.append("Product: "+ res.getString(1) + "\n");
+                    buffer.append("Product Weight: "+ res.getString(2) + "\n\n");
                 }
                 showMessage("Data",buffer.toString());
             }

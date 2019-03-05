@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -24,10 +25,16 @@ public class Database extends SQLiteOpenHelper {
         super(context,DATABASE_NAME, null, 1);
     }
 
+    public void resetDatabase(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("Drop table " + TABLE_NAME);
+        db.execSQL("create table " + TABLE_NAME + " (ID integer primary key autoincrement, PRODUCT TEXT, WEIGHT Text)");
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (PRODUCT TEXT primary key, WEIGHT INTEGER)");
+        db.execSQL("Drop table " + TABLE_NAME);
+        db.execSQL("create table " + TABLE_NAME + " (ID integer primary key autoincrement, PRODUCT TEXT, WEIGHT Text)");
     }
 
     @Override
