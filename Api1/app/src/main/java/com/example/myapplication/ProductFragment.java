@@ -22,7 +22,8 @@ import android.widget.Toast;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class ProductFragment extends Fragment {
+public class
+ProductFragment extends Fragment {
     private ImageButton btn1;
     private ImageButton btn2;
     private ImageButton btn3;
@@ -149,10 +150,10 @@ public class ProductFragment extends Fragment {
                 }
                 StringBuffer buffer = new StringBuffer();
                 while(res.moveToNext()){
-                    SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy"); // New Pattern
+                    SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
                     java.util.Date date;
                     try {
-                        date = sdf1.parse(res.getString(3)); // Returns a Date format object with the pattern
+                        date = sdf1.parse(res.getString(3));
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
