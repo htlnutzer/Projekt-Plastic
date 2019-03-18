@@ -66,4 +66,9 @@ public class Database extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("Select * from " + TABLE_NAME, null);
         return res;
     }
+
+    public Cursor getWeightPerDay(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("Select " + ProductWeight + "from " + TABLE_NAME + "where DAY = " + today)
+    }
 }
