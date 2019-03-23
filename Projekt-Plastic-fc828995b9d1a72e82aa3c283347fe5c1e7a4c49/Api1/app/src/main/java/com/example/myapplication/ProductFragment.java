@@ -149,7 +149,7 @@ public class ProductFragment extends Fragment {
                 }
                 StringBuffer buffer = new StringBuffer();
                 while(res.moveToNext()){
-                    SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy"); // New Pattern
+                    SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd"); // New Pattern
                     java.util.Date date;
                     try {
                         date = sdf1.parse(res.getString(3)); // Returns a Date format object with the pattern
