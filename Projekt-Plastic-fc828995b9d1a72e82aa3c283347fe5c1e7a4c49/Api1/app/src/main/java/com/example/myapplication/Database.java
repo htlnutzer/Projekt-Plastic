@@ -82,4 +82,12 @@ public class Database extends SQLiteOpenHelper {
         res.close();
         return weightPerDay;
     }
+
+    public String getMostUsedProduct(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT Product, MAX(Count) As Anzahl FROM (SELECT Product, COUNT(Product) AS Count FROM PLASTIC_USAGE GROUP BY Product ) AS CountTable", null);
+        res.moveToFirst();
+        String product = res.getString(0);
+        return product;
+    }
 }

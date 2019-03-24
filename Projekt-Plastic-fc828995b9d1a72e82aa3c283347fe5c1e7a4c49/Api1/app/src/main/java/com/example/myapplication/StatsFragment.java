@@ -71,7 +71,7 @@ public class StatsFragment extends Fragment {
         BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
         Description description = new Description();
-        description.setText("my first bar graph");
+        description.setText("Gramms");
         barChart.setDescription(description);
 
         XAxis xAxis = barChart.getXAxis();
